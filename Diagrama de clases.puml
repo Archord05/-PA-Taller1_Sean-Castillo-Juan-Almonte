@@ -86,13 +86,4 @@ Cliente "0..*"--o Videojuego: Compra
 note "El cliente puede ser miembro o normal" as n1
 Cliente.n1
 
-'Observaciones
-
-'Algo que no queda claro dentro del texto es la existencia de un stock para los videojuegos
-'La funcionalidad de cuantos clientes miembros fueron atendidos. ¿Seria un contador?
-'Algunos algoritmos(Me gusta llamarlos logaritmos) Son necesarios para el desarrollo del codigo.
-'Sin embargo no me queda claro si deben ser añadidos explicitamente
-'¿¡Donde rabanos se deberia colocar el algoritmo de lecturaDeArchivo!?
-
-
 @enduml
