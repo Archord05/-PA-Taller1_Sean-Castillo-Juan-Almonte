@@ -1,0 +1,98 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skin rose
+
+class Empleado{
+    - usuario: String
+    - contrasena: String
+    - bono: int
+
+    + Empleado(usuario: String, contrasena: String, bono: int)
+    + getUsuario(): String
+    + getContrasena(): String
+    + getBono(): int
+    + lecturaDeArchivo(): Void
+}
+
+class ListaEmpleado{
+    - arregloEmpleado: Empleado[]
+    - cantidadMinima: int
+    - cantidadMaxima: int
+    + ListaEmpleado(getCantidadMaxima: int)
+    + getCantidadMinima(): int
+    + BuscarEmpleado(contrasena: String): int
+    + getArregloEmpleado(): Empleado[]
+
+}
+
+class Videojuego{
+    - codigoUnico: String
+    - nombre: String
+    - precio: int
+    - genero: String
+    - clasificacionEdad: int
+    - desarrolladora: String
+    - plataforma: String
+    - generoDescuento: String
+    - descuento: int
+
+    + Videojuego(codigoUnico: String, nombre: String, precio: int, genero: String,
+      clasificacionEdad: int, desarrolladora: String, plataforma: String, generoDescuento: String)
+      Descuento: int)
+    + getCodigoUnico(): String
+    + getNombre(): String
+    + getPrecio(): int
+    + getGenero(): String
+    + getClasificacionEdad(): int
+    + getDesarrolladora(): String
+    + getPlataforma(): String
+    + getGeneroDescuento(): String
+    + getDescuneto(): int
+    + lecturaDeArchivo(): Void
+    + setPrecio(): void
+}
+
+class ListaVideojuego{
+    - arregloVideojuego: Videojuego[]
+    - cantidadMinima: int
+    - cantidadMaxima: int
+    + ListaVideojuego(cantidadMaxima: int)
+    + getCantidadMinima(): int
+    + BuscarVideojuego(codigoUnico: String): int
+    + BuscarVideojuego(nombre: String): int
+    + getArregloVideojuego(): Videojuego
+
+}
+
+class Cliente{
+    - rut: String
+    - nombreCompleto: String
+    - correoElectronico: String
+    - estado: String
+    + Cliente(rut: String, nombreCompleto: String, correoElectronico: String, estado: String)
+    + getRut(): String
+    + getNombreCompleto(): String
+    + getEstado(): String
+}
+
+'relaciones
+
+Empleado "5"--> "1"ListaEmpleado: Pertenece
+Empleado "1..5*"--o Videojuego: Vende
+Videojuego "10"--> "1"ListaVideojuego: Pertenece
+Cliente "0..*"--o Videojuego: Compra
+
+note "El cliente puede ser miembro o normal" as n1
+Cliente.n1
+
+'Observaciones
+
+'Algo que no queda claro dentro del texto es la existencia de un stock para los videojuegos
+'La funcionalidad de cuantos clientes miembros fueron atendidos. ¿Seria un contador?
+'Algunos algoritmos(Me gusta llamarlos logaritmos) Son necesarios para el desarrollo del codigo.
+'Sin embargo no me queda claro si deben ser añadidos explicitamente
+'¿¡Donde rabanos se deberia colocar el algoritmo de lecturaDeArchivo!?
+
+
+@enduml
