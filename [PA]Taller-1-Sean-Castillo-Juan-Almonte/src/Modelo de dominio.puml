@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'Modificador de tema, en caso de tener dificultades para la lectura. Porfavor borrar
+!define DARKBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+'Entidades
+entity Empleado{
+    Usuario
+    Contraseña
+    Venta()
+    Descuento()
+    Bonificación por venta()
+}
+entity Videojuego{
+    Codigo unico
+    Nombre
+    Precio
+    Genero
+    Clasificacion por edades
+    Desarrolladora
+    Plataforma
+}
+entity Cliente{
+    Rut
+    Nombre completo
+    Correo electronico
+    Descuento
+    Compra()
+    Miembro()
+}
+
+'Relaciones
+Empleado "1" -> "1..*"Videojuego : Vende
+Cliente "1"--o "1..*"Videojuego: Compra
+
+'Notas
+note "El cliente puede ser miembro de la tienda \npara tener descuentos de hasta el 30% en distintos generos " as n1
+note "Los empleados deben iniciar sesion para vender los videojuegos. \nReciben 2% de comision por venta" as n2
+note "Los descuentos de los videojuegos son regidos por un genero aletorio, \ncual cambia cada dia" as n3
+Cliente.n1
+Empleado..n2
+
+n3..n1
+@enduml
