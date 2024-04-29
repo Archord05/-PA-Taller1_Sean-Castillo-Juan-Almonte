@@ -1,0 +1,131 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skin rose
+class Cliente{
+- rut:String
+- nombreCompleto: String
+- correoElectronico: String
+- estado: String
++ Cliente(rut: String, nombreCompleto:String, correoElectronico:String, estado:String)
++ getRut(): String
++ getNombreCompleto(): String
++ getCorreoElectronico(): String
++ getEstado(): String
+
+}
+
+class Videojuego{
+   - codigoUnico: String
+   - nombre: String
+   - precio: double
+   - genero: String
+   - clasificacionEdad: String
+   - compania: String
+   - plataforma: String
+   - generoDescuento: String
+   - descuento: int
+   + Videojuego(codigoUnico: String, nombre: String, precio: double, genero: String. clasificacionEdad: String,
+   compania: String, plataforma: String, generoDescuento: String, descuento: int)
+   + getCodigoUnico(): String
+   + getNombre(): String
+   + getPrecio(): double
+   + getGenero(): String
+   + getClasificacionEdad(): String
+   + getCompania(): String
+   + getPlataforma(): String
+}
+class Empleado{
+- usuario: String
+- contrasena: String
++ Empleado(usuario: String, contrasena: String)
++ getUsuario(): String
++ getContrasena(): String
+
+}
+class Estadistica{
+    - videojuegoIngresado; String
+    - plataforma: String
+    - clientePremium: String
+    - dineroRecaudado: double
+    - trabajadorConMasVentas: String
+    - comision: double
+    + Estadistica(videojuegoIngresado: String, plataforma: String, clientePremium: String, dineroRecaudado: double,
+    trabajadorConMasVentas: String, comision: double)
+    + getVideojuegoIngresado():String
+    + getClientePremium(): String
+    + getDineroRecaudado(): double
+    + getTrabajadorConMasVentas(): String
+    + getComision(): double
+    + getPlataforma(): String
+    + getVideojuegoMasVendido(): int
+}
+
+class ListaVideojuego{
+- cantidadMaxima: int
+- cantidadActual: int
+- arregloVideojuego: Videojuego[]
++ ListaVideojuego(cantidadMaxima: int)
++ lecturaArchivo(nombreArchivo: String): void
++ buscarVideojuegoCodigo(codigoUnico: String): int
++ buscarVideojuegoNombre(nombre: String): int
++ obtenerPosicionVideojuego(posicion: int): Videojuego
++ agregarVideojuego(Videojuego juego): boolean
++ generadorDeDescuento(): void
++ getDescuentoAletorio: String
+}
+class ListaEmpleados{
+- cantidadMaxima: int
+- cantidadActual: int
+- arregloEmpleados: Empleado[]
++ ListaEmpleados(cantidadMaxima; int)
++ lecturaArchivo(nombreArchivo: String): void
++ buscarEmpleadoUsuario(usuario: String): int
++ buscarEmpleadoContrasenia(contrasena: String, posicion: int): int
++ obtenerPosicion(posicion: int): Empleado
++ empleadoActual(empleado: String): String
++ getEmpleadoActivo(): String
++ getCantidadMaxima(): int
++ getCantidadActual(): int
++ getArrelgoEmpleado(): Empleado[]
+}
+class ListaClientes{
+- cantidadMaxima: int
+- cantidadActual: int
++ ListaCLientes(cantidadMaxima: int)
++ agregarClientes(cliente: Cliente): boolean
++ validacion(rut: String): boolean
++ buscarCliente(rut: String): int
++ obtenerPosicionCliente(posicion: int): Cliente
++ getArregloCliente(): Cliente[]
++ getCantidadMaxima(): int
++ getCantidadActual(): int
+}
+class ListaEstadisticas{
+- cantidadMaxima: int
+- cantidadActual: int
+- arregloEstadistica: Estadistica[]
++ ListaEstadisticas(int cantidadMaxima)
++ agregarEstadistica(estadistica: Estadistica): boolean
++ cantidadVideojuegoVendido(estadistica: ListaEstadisticas): String
++ plataFormaConMayorVenta(estadistica: ListaEstadisticas): String
++ ventaAClientesRegistrados(estadisticas: ListaEstadisticas): int
++ imprimirVentasTotales(estadistica: ListaEstadisticas): double
++ trabajadorConMasVentas((estadistica: ListaEstadisticas): boolean
++ obtenerPosicionEstadisticas(posicion: int): Estadistica
++ getArregloEstadisticas(): Estadistica[]
++ getCantidadMaxima(): int
++ getCantidadActual(): int
+}
+
+Videojuego --> ListaVideojuego
+Cliente --> ListaClientes
+Estadistica --> ListaEstadisticas
+Empleado --> ListaEmpleados
+Empleado --o Videojuego
+Videojuego --o Estadistica
+Cliente --o Estadistica
+Empleado --o Estadistica
+
+
+@enduml
